@@ -1,0 +1,15 @@
+<!-- property binding syntax [propertyname] -->
+
+<header-component>
+    <label-component [text] = "'header-component'"></label-component>
+</header-component>
+<content-component>
+    <login-component (onLogin)="onLoginHandler($event)" [status]="loginStatus"></login-component>
+    <!-- onLogin is event emitter from login component  -->
+</content-component>
+<footer-component>
+    <label-component [text] = "'footer-component'"></label-component>
+    <!-- <signup-component (onSignUpEvent)="onSignUp($event)" [signUpstatus]="signUpStatus"></signup-component> -->
+    <button (click) = "switch()" class="button">switch to signup</button>
+</footer-component>
+<router-outlet></router-outlet>

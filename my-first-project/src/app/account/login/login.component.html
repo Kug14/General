@@ -1,0 +1,38 @@
+<div class="login-form">
+    <form #signinForm="ngForm" (ngSubmit)="signup(signinForm.form)">
+      <h1>Login</h1>
+      <div class="content">
+        <div class="input-field">
+            <!-- event binding - using a function  -->
+            <input [(ngModel)]="email"
+            #emailFormControl="ngModel" name="emailCtrl"  type="email" placeholder="Email"
+            autocomplete="nope"
+            required
+            pattern="[^ @]*@[^ @]*">
+        </div>
+        <div *ngIf="emailFormControl.errors && (emailFormControl.dirty || emailFormControl.touched)">
+          <p *ngIf="emailFormControl.errors['required']">Email is required</p>
+          <p *ngIf="emailFormControl.errors['pattern']">Email must contain at least the @ character</p>
+        </div>
+        <div class="input-field">
+          <input [(ngModel)]="password" #passwordFormControl="ngModel"
+          name="passwordCtrl" type="password"
+            placeholder="Password" autocomplete="new-password"
+            required
+             minlength="6"
+             pattern="[a-z]*@[A-Z]*[0-9]*">
+        </div>
+        <div *ngIf="passwordFormControl.errors && (passwordFormControl.dirty || passwordFormControl.touched)">
+          <p *ngIf="passwordFormControl.errors['required']">Password is required</p>
+          <p *ngIf="passwordFormControl.errors['pattern']">should hav A-Z @ a-z 123</p>
+        </div>
+        <output>{{status}}</output>
+        <a href="#" class="link">Forgot Your Password?</a>
+      </div>
+      <div class="action">
+        <input type="submit" value="Sign in" formnovalidate/>
+        <button (click)="login()">login</button>
+        <button (click)="clear()">Reset</button>
+      </div>
+    </form>
+  </div>
